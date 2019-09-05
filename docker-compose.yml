@@ -1,0 +1,37 @@
+version: '3'
+services:
+  php:
+    build: ./php
+    ports:
+      - 8000:8000
+    volumes:
+      - ./src/laravelapp:/var/www/laravelapp
+    working_dir: /var/www/laravelapp
+    command: "php artisan serve --host 0.0.0.0"
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: mysql:5.7
+    ports:
+      - 13306:3306
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8888:80
+    depends_on:
+      - db
+
+  redis:
+    image: redis:5.0-alpine
+    ports:
+      - 16379:6379
+
+volumes:
+  db-data:
