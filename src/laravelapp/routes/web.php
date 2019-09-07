@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::get('hello', 'Hellocontroller@index');
 Route::get('hello/other', 'Hellocontroller@other');
+Route::get('single', 'SingleActionController');
