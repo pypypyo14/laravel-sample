@@ -16,9 +16,10 @@
             CAUTION!
         @endslot
         @slot('msg_content')
-            これはメッセージの表示です
+            これはコンポーネントの表示です
         @endslot
     @endcomponent
+    @include('components.message',['msg_title'=>'OK', 'msg_content'=>'これはサブビューの表示です'])
 @endsection
 
 @section('footer')
