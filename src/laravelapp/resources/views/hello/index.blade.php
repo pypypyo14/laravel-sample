@@ -9,7 +9,11 @@
 </head>
 <body>
     <h1>Blade/Index</h1>
-    <p>{{$msg}}</p>
+    @isset ($name)
+    <p>こんにちは、{{$name}}さん。</p>
+    @else
+    <p>おなまえは？</p>
+    @endisset
     <form action="/hello" method="post">
         {{ csrf_field() }}
         <input type="text" name="name">
