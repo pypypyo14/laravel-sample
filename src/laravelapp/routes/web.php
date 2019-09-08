@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 use App\Http\Middleware\HelloMiddleware;
 
-Route::get('hello', 'Hellocontroller@index')
-    ->middleware('hello');
+Route::get('hello', 'Hellocontroller@index');
 Route::post('hello', 'HelloController@post');
 Route::get('single', 'SingleActionController');
