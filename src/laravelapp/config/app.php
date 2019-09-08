@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // add pypypyo14
+        App\Providers\HelloServiceProvider::class,
+
     ],
 
     /*
