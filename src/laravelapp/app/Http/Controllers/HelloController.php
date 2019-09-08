@@ -32,11 +32,9 @@ EOF;
         return $response;
     }
 
-    public function index($userid='zero', Request $request){
+    public function index(){
         $data = [
-            'msg'=>'これはコントローラから渡されたメッセージです。',
-            'userid'=>$userid,
-            'queryid'=>$request->id
+            'msg'=>'これはBladeを利用したサンプルです。',
         ];
         return view('hello.index', $data);
     }

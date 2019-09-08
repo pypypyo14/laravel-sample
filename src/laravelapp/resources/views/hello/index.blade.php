@@ -8,9 +8,7 @@
     </style>
 </head>
 <body>
-    <h1>Index</h1>
-    <p><?php echo $msg;?></p>
-    <p>ID=<?php echo $userid; ?></p>
-    <p>QueryID=<?php echo $queryid; ?></p>
+    <h1>Blade/Index</h1>
+    <p>{{$msg}}</p>
 </body>
 </html>
