@@ -32,8 +32,12 @@ EOF;
         return $response;
     }
 
-    public function index(){
-        $data = ['msg'=>'これはコントローラから渡されたメッセージです。'];
+    public function index($userid='zero', Request $request){
+        $data = [
+            'msg'=>'これはコントローラから渡されたメッセージです。',
+            'userid'=>$userid,
+            'queryid'=>$request->id
+        ];
         return view('hello.index', $data);
     }
 }
