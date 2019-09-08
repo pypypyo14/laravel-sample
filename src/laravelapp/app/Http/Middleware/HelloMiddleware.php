@@ -15,12 +15,14 @@ class HelloMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $data = [
-            ['name'=> 'taro', 'mail'=>'taro@aaa'],
-            ['name'=> 'hanako', 'mail'=>'hanako@aaa'],
-            ['name'=> 'sachiko', 'mail'=>'sachiko@aaa'],
-        ];
-        $request->merge(['data'=>$data]);
-        return $next($request);
+        $response = $next($request); //コントローラの実行結果が返ってくる
+        $content = $response->content();
+
+        $pattern = '/<middleware>(.*)<\/middleware>/i';
+        $replace = '<a href="http://$1">$1</a>';
+        $content = preg_replace($pattern, $replace, $content);
+
+        $response->setContent($content);
+        return $response;
     }
 }
