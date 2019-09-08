@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        //CSRF対策不要な場合はここにフォームの存在するパスを指定する(ワイルドカード可)
+        //アプリケーション全体でOFFにするときはkernek.phpからこのミドルウェア自身を削除
     ];
 }
