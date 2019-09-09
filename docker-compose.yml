@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   php:
     build: ./php
@@ -11,6 +11,10 @@ services:
     depends_on:
       - db
       - redis
+    environment:
+      DB_HOST: db
+      DB_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      DB_USERNAME: root
 
   db:
     image: mysql:5.7
