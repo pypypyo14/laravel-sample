@@ -16,35 +16,15 @@
     <table>
         <form action="/hello" method="post">
             {{ csrf_field() }}
-            @if ($errors->has('name'))
-                <tr>
-                    <th>Error</th>
-                    <td>{{$errors->first('name')}}</td>
-                </tr>
-            @endif
+            @if ($errors->has('msg'))
             <tr>
-                <th>name: </th>
-                <td><input type="text" name="name" value="{{old('name')}}"></td>
+                <th>ERROR</th>
+                <td>{{ $errors->first('msg') }}</td>
             </tr>
-            @if ($errors->has('mail'))
-                <tr>
-                    <th>Error</th>
-                    <td>{{$errors->first('mail')}}</td>
-                </tr>
             @endif
             <tr>
-                <th>mail: </th>
-                <td><input type="text" name="mail" value="{{old('mail')}}"></td>
-            </tr>
-            @if ($errors->has('age'))
-                <tr>
-                    <th>Error</th>
-                    <td>{{$errors->first('age')}}</td>
-                </tr>
-            @endif
-            <tr>
-                <th>age: </th>
-                <td><input type="text" name="age" value="{{old('age')}}"></td>
+                <th>Message: </th>
+                <td><input type="text" name="msg" value="{{old('msg')}}"></td>
             </tr>
             <tr>
                 <th></th>
