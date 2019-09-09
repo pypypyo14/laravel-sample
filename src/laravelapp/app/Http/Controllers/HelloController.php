@@ -11,7 +11,7 @@ class HelloController extends Controller
 {
     public function index(Request $request){
         if ($request->hasCookie('msg')){
-            $msg = 'Cookie: '. $request->cookir('msg');
+            $msg = 'Cookie: '. $request->cookie('msg');
         } else {
             $msg = 'Cookieはありません';
         }
