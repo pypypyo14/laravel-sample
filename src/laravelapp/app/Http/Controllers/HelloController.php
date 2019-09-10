@@ -13,7 +13,7 @@ class HelloController extends Controller
     public function index(Request $request){
         if (isset($request->id)){
             $param = ['id' => $request -> id];
-            $items = DB::select('select * from people where id = :id', $param);
+            $items = DB::table('people')->get();
         } else {
             $items = DB::select('select * from people');
         }
@@ -38,7 +38,7 @@ class HelloController extends Controller
 
     public function edit(Request $request){
         $param = ['id' => $request -> id];
-        $item = DB::select('select * from people where id = :id', $param);
+        $item = DB::table('people')->get();
         return view('hello.edit', ['form'=> $item[0]]);
     }
 
@@ -55,7 +55,7 @@ class HelloController extends Controller
 
     public function del(Request $request){
         $param = ['id' => $request->id];
-        $item = DB::select('select * from people where id = :id', $param);
+        $item = DB::table('people')->get();
         return view('hello.del', ["form" => $item[0]]);
     }
 
@@ -63,6 +63,14 @@ class HelloController extends Controller
         $param = ['id' => $request -> id];
         DB::delete('delete from people where id = :id', $param);
         return redirect('hello');
+    }
+
+    public function show(Request $request){
+        $id = $request -> id;
+        $item = DB::table('people')
+                ->where('id', $id)
+                ->first();
+        return view('hello.show', ['item' => $item]);
     }
 
 }
