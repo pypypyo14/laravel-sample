@@ -63,10 +63,10 @@ class HelloController extends Controller
     }
 
     public function show(Request $request){
-        $min = $request -> min;
-        $max = $request -> max;
+        $page = $request->page;
         $items = DB::table('people')
-                ->whereRaw('age >= ? and age <= ?', [$min, $max])
+                ->offset($page * 3) // 何番目のレコードから取得開始するか
+                ->limit(3)          // 何件までレコード取得するか
                 ->get();
         return view('hello.show', ['items' => $items]);
     }
