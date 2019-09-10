@@ -11,12 +11,9 @@ use Illuminate\Support\Facades\DB;
 class HelloController extends Controller
 {
     public function index(Request $request){
-        if (isset($request->id)){
-            $param = ['id' => $request -> id];
-            $items = DB::table('people')->get();
-        } else {
-            $items = DB::select('select * from people');
-        }
+        $items = DB::table('people')
+                    ->orderBy('age', 'asc')
+                    ->get();
         return view('hello.index', ['items'=> $items]);
     }
 
