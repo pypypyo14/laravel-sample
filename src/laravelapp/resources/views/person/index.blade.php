@@ -11,7 +11,9 @@
 @section('content')
     <table>
         <tr><th>Data</th></tr>
-        <tr><td>{{$item -> getData()}}</td></tr>
+        @foreach ($items as $item)
+            <tr><td>{{ $item -> getData() }}</td></tr>
+        @endforeach
     </table>
 @endsection
 
