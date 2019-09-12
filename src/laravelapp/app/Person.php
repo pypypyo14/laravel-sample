@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\ScopePerson;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -11,9 +12,7 @@ class Person extends Model
         // グローバルスコープ
         // すべてのクエリにこのスコープが自動適用
         parent::boot();
-        static::addGlobalScope('age', function(Builder $builder){
-            $builder->where('age', '>', 20);
-        });
+        static::addGlobalScope(new ScopePerson);
     }
 
     public function getData(){
